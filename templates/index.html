@@ -1,0 +1,33 @@
+<h1>Hello World !</h1>
+<p>This is my first webpage!!!</p>
+<p>Isnt this cool!!!my name is {{first_name}}</p>
+
+<p>{{stuff|safe}}</p>
+<p>{{stuff|striptags}}</p>
+<p>{{stuff|title}}</p>
+<p>{{stuff|capitalize}}</p>
+<p>{{stuff|trim}}</p>
+<p>{{stuff|upper}}</p>
+
+<h3>Favorite Pizza</h3>
+
+{% for topping in favorite_pizza %}
+    {{ topping }}<br/>
+{% endfor %}
+<p>{{favorite_pizza}}</p>
+
+<br/><br/>
+{{ favorite_pizza.0 }}
+{{ favorite_pizza.3 }}<br/>
+{{ favorite_pizza.2 }}<br/>
+{{ favorite_pizza.1 }}
+
+{% for topping in favorite_pizza %}
+
+    {% if topping == 542 %}
+        {{ topping + 18 }}<br/>
+    {% else %}
+        {{ topping }}<br/>
+    {% endif %}
+    
+{% endfor %}
