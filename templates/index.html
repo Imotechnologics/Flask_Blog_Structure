@@ -1,7 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
 <h1>Hello World !</h1>
 <p>This is my first webpage!!!</p>
 <p>Isnt this cool!!!my name is {{first_name}}</p>
-
+<img src="{{ url_for('static', filename='images/logo.png')}}">
 <p>{{stuff|safe}}</p>
 <p>{{stuff|striptags}}</p>
 <p>{{stuff|title}}</p>
@@ -31,3 +34,4 @@
     {% endif %}
     
 {% endfor %}
+{% endblock %}
