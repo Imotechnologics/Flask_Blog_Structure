@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+{{ ckeditor.load() }}
 {% for message in get_flashed_messages() %}
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
     {{ message }}      
@@ -9,6 +9,7 @@
     </div>
 {% endfor %}
 
+{% if current_user.is_authenticated %}
 <h1>Add Blog Post... </h1>
 <br/>
 <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
@@ -21,11 +22,7 @@
     {{ form.title(
     class="form-control") }}
     <br/>
-    {{ form.author.label(
-    class="form-label") }}
-    {{ form.author(
-    class="form-control") }}
-    <br/>
+
     {{ form.slug.label(
     class="form-label") }}
     {{ form.slug(
@@ -40,7 +37,19 @@
     {{ form.submit(class="btn
     btn-secondary") }}
 
-</form></div>
+</form>
+{{ ckeditor.load() }}
+{{ ckeditor.config(name='content') }}
+</div>
+
+{% else %}
+
+<h2>Must be Logged in...</h2>
+<p>Sorry you must be Looged in to acces this page!</p>
+
+<a href="{{ url_for('login') }}">Login Here</a>
+
+{% endif %}
 
 {% endblock %}
 
